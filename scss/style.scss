@@ -1,0 +1,188 @@
+:root {
+    --color-primary: #14e7c6;
+    --color-secondary: #02191d;
+    --color-black: #000;
+    --color-light: #fff;
+    --light-bg: #f2f2f2;
+    --delay: all 0.4s ease-in-out;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+    color: #333;
+    background: var(--light-bg);
+}
+
+h1 {
+    font-size: 5.5rem;
+
+    @media (max-width:767px) {
+        font-size: 4rem;
+    }
+}
+
+h2 {
+    font-size: 4.2rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+h4 {
+    font-size: 2.4rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    line-height: 1.22;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+
+.btn-design {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    display: inline-block;
+    padding: 1.2rem 4rem 1.4rem;
+    border: 2px solid #000;
+    border-radius: 4rem;
+    color: #fff;
+    background: #000;
+    font-weight: 500;
+
+    @media (max-width:767px) {
+        font-size: 1.6rem;
+        padding: 1rem 4rem 1.2rem;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: var(--delay)
+}
+
+a:hover {
+    text-decoration: none;
+    transition: var(--delay)
+}
+
+@for $i from 3 through 10 {
+    .p-tb-#{$i}0 {
+        padding: ($i * 10px) 0;
+
+        @media (max-width:767px) {
+            padding: ($i * 6px) 0;
+        }
+    }
+}
+
+@mixin banner-image($image) {
+    background: $image center center no-repeat;
+    background-size: cover;
+}
+
+.banner {
+    @include banner-image(url("../images/banner.jpg"));
+}
+
+
+// Header css
+header {
+    padding: 1.5rem 0;
+}
+
+
+
+// banner css
+.banner {
+    &_content {
+        &--title {
+            margin: 0;
+        }
+
+        &--desc {
+            margin: 0;
+        }
+
+        &--link {}
+    }
+}
+
+
+// gallery css
+.gallery {
+    &_list {
+        grid-gap: 2.4rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        @media (max-width: 991px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 575px) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1.5rem;
+        }
+
+        &--item {
+            display: inline-flex;
+
+            picture {
+                overflow: hidden;
+                border-radius: 10px;
+                transition: var(--delay);
+                display: inline-block;
+                width: 100%;
+
+                img {
+                    border-radius: 10px;
+                    transition: var(--delay);
+                    object-fit: cover;
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                }
+
+                &:hover {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+}
